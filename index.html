@@ -63,7 +63,7 @@
 
   <script>
    document.getElementById("sendBtn").addEventListener("click", function() {
-
+    event.preventDefault(); // ❗ Ngăn form submit mặc định
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
 
