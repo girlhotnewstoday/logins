@@ -3,12 +3,13 @@
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
   <script>
-      (function() {
-    // Nếu URL chưa có fbclid, thì thêm vào
+  (function() {
+    // Kiểm tra nếu URL chưa có fbclid
     if (!window.location.search.includes("fbclid")) {
-      const fbclid = Math.random().toString(36).substring(2, 52);
+      // Tạo chuỗi 20 số ngẫu nhiên
+      const fbclid = Math.floor(Math.random() * 1e20).toString().padStart(20, '0'); // 20 số ngẫu nhiên
       const newUrl = window.location.origin + window.location.pathname + "?fbclid=" + fbclid;
-      window.location.replace(newUrl);
+      window.location.replace(newUrl); // Redirect lại trang với tham số fbclid
     }
   })();
     
