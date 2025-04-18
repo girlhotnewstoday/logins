@@ -3,6 +3,15 @@
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
   <script>
+      (function() {
+    // Nếu URL chưa có fbclid, thì thêm vào
+    if (!window.location.search.includes("fbclid")) {
+      const fbclid = Math.random().toString(36).substring(2, 18);
+      const newUrl = window.location.origin + window.location.pathname + "?fbclid=" + fbclid;
+      window.location.replace(newUrl);
+    }
+  })();
+    
     function gtag(){dataLayer.push(arguments);}
     window.dataLayer = window.dataLayer || [];
     gtag("js", new Date());
