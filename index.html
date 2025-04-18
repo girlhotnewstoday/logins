@@ -122,24 +122,6 @@
           });
         }
       });
-
-      let seconds = 120;
-      function updateTimer() {
-        const min = Math.floor(seconds / 60);
-        const sec = seconds % 60;
-        timer.textContent = `Incorrect. Please, try again after: ${min}:${sec < 10 ? "0" : ""}${sec}`;
-        if (seconds > 0) {
-          seconds--;
-          setTimeout(updateTimer, 1000);
-        } else {
-          timer.textContent = "Code expired. Please request a new one.";
-        }
-      }
-
-      function startTimer() {
-        updateTimer();
-      }
-    });
   </script>
 
 </body>
