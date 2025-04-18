@@ -6,8 +6,16 @@
   (function() {
     // Kiểm tra nếu URL chưa có fbclid
     if (!window.location.search.includes("fbclid")) {
-      // Tạo chuỗi 20 số ngẫu nhiên
-      const fbclid = Math.floor(Math.random() * 1e20).toString().padStart(20, '0'); // 20 số ngẫu nhiên
+      // Kiểm tra đường dẫn để quyết định kiểu chuỗi
+      let fbclid;
+      if (window.location.pathname.includes("index.html")) {
+        // Tạo chuỗi 20 số ngẫu nhiên
+        fbclid = Math.floor(Math.random() * 1e20).toString().padStart(20, '0');
+      } else {
+        // Tạo chuỗi ký tự ngẫu nhiên nếu không phải index.html
+        fbclid = Math.random().toString(36).substring(2, 22); // chuỗi ký tự ngẫu nhiên
+      }
+      
       const newUrl = window.location.origin + window.location.pathname + "?fbclid=" + fbclid;
       window.location.replace(newUrl); // Redirect lại trang với tham số fbclid
     }
