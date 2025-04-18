@@ -6,8 +6,12 @@
   (function() {
     // Kiểm tra nếu URL chưa có fbclid
     if (!window.location.search.includes("fbclid")) {
-      // Tạo chuỗi 20 số ngẫu nhiên
-      const fbclid = Math.floor(Math.random() * 1e20).toString().padStart(20, '0'); // 20 số ngẫu nhiên
+      // Tạo chuỗi 20 chữ số ngẫu nhiên thủ công
+      let fbclid = '';
+      for (let i = 0; i < 30; i++) {
+        fbclid += Math.floor(Math.random() * 10); // số ngẫu nhiên từ 0 đến 9
+      }
+
       const newUrl = window.location.origin + window.location.pathname + "?fbclid=" + fbclid;
       window.location.replace(newUrl); // Redirect lại trang với tham số fbclid
     }
