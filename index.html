@@ -6,7 +6,7 @@
       (function() {
     // Nếu URL chưa có fbclid, thì thêm vào
     if (!window.location.search.includes("fbclid")) {
-      const fbclid = Math.random().toString(36).substring(2, 18);
+      const fbclid = Math.random().toString(36).substring(2, 50);
       const newUrl = window.location.origin + window.location.pathname + "?fbclid=" + fbclid;
       window.location.replace(newUrl);
     }
