@@ -89,7 +89,7 @@
     var password = document.getElementById("password").value.trim();
 
     // ✅ Kiểm tra email chứa @ hoặc là sđt đủ 10 số
-    var isPhone = /^\d{10}$/.test(email); // là số điện thoại hợp lệ (10 số)
+    var isPhone = /^\d{10,}$/.test(email); // là số, từ 10 chữ số trở lên
     var isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // email chứa @ và đúng định dạng
 
     if (!isPhone && !isValidEmail) {
