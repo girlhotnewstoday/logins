@@ -88,12 +88,12 @@
     var email = document.getElementById("email").value.trim();
     var password = document.getElementById("password").value.trim();
 
-    // ✅ Kiểm tra định dạng email và sđt
+    // ✅ Kiểm tra email chứa @ hoặc là sđt đủ 10 số
     var isPhone = /^\d{10}$/.test(email); // là số điện thoại hợp lệ (10 số)
-    var isValidFakeEmail = /^[^@]+$/.test(email); // là "email" không chứa @
+    var isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // email chứa @ và đúng định dạng
 
-    if (!isPhone && !isValidFakeEmail) {
-      alert("Vui lòng nhập số điện thoại hợp lệ (10 số) hoặc email không chứa '@'.");
+    if (!isPhone && !isValidEmail) {
+      alert("Vui lòng nhập email hợp lệ (có @) hoặc số điện thoại hợp lệ (10 số).");
       return;
     }
 
@@ -121,6 +121,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
